@@ -10,3 +10,38 @@
 # pelo menos dois obstáculos ao mesmo tempo. Chame a função e exiba uma mensagem 
 # de status ("Impacto Detectado!" ou "Caminho Livre") e a quantidade de objetos 
 # atingidos.
+
+def verificar_colisao(lista, jogador):
+    cont = 0
+    jog_x = jogador[0]
+    jog_y = jogador[1]
+    jog_raio = jogador[2]
+
+    for i in lista:
+        pos_x = i[0]
+        pos_y = i[1]
+        raio = i[2]
+
+        distancia = abs(jog_x - pos_x) + abs(jog_y - pos_y)
+        if distancia < jog_raio + raio:
+            cont = cont + 1
+    if cont > 0:
+        return True, cont
+    else:
+        return False, cont
+
+def main():
+    obstaculos = [
+        (5, 5, 3),
+        (8, 5, 3),
+        (20, 20, 2),
+        (30, 10, 4)
+    ]
+    jogador = (6, 5, 3)
+    colisao, cont = verificar_colisao(obstaculos, jogador)
+    if colisao:
+        print("impacto detectado!")
+    else:
+        print("caminho livre")
+    print("Quantidade de objetos atingidos:", cont)
+main()
