@@ -10,3 +10,32 @@
 # contenha pelo menos um ou dois pixels totalmente pretos e outros variados. Passe essa 
 # lista para a função e imprima a nova "imagem" processada, além do relatório 
 # informando a quantidade exata de pixels escuros puros encontrados. 
+
+
+def processar_pixels(lista):
+    nova_lista = []
+    cont = 0
+  
+    for i in lista:
+        r = i[0]
+        g = i[1]
+        b = i[2]
+        media = (r + g + b) // 3
+        nova_lista.append(media)
+        if r == 0 and g == 0 and b == 0:
+            cont = cont + 1
+    return nova_lista, cont
+
+def main():
+    pixels = [
+        (255, 0, 0),
+        (0, 255, 0),
+        (0, 0, 0),
+        (100, 150, 200),
+        (0, 0, 0),
+        (255, 255, 255)
+    ]
+    imagem, cont = processar_pixels(pixels)
+    print("imagem processada:", imagem)
+    print("qtde de pixels pretos:", cont)
+main()
