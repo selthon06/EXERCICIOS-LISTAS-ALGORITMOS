@@ -5,3 +5,30 @@
 # usando `np.argmax()`; (c) Aplique um reajuste automático atribuindo a nota mínima 
 # `6.0` a todas as avaliações com nota inferior a 6.0; (d) Remova a última coluna 
 # (Avaliação 3) da matriz utilizando `np.delete(..., axis=1)`. 
+
+import numpy as np
+
+def analisar_notas(notas):
+    media = np.mean(notas, axis=1)
+    media_avaliacao = np.mean(notas, axis=0)
+    maior = np.argmax(media_avaliacao)
+    notas[notas < 6.0] = 6.0
+    nova = np.delete(notas, 2, axis=1)
+  
+    print("media final dos alunos:", media)
+    print("avaliacao com maior media:", maior + 1)
+    print("notas com reajuste:")
+    print(notas)
+    print("matriz sem a avaliacao 3:")
+    print(nova)
+
+def main():
+    notas = np.array([
+        [5.0, 7.5, 6.0],
+        [8.0, 9.0, 4.0],
+        [3.5, 5.0, 6.5],
+        [7.0, 6.0, 8.5]
+    ])
+  
+    analisar_notas(notas)
+main()
