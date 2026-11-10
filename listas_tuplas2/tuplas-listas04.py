@@ -40,8 +40,8 @@ def main():
     jogador = (6, 5, 3)
     colisao, cont = verificar_colisao(obstaculos, jogador)
     if colisao:
-        print("impacto detectado!")
+        print("Impacto detectado!")
     else:
-        print("caminho livre")
-    print("Quantidade de objetos atingidos:", cont)
+        print("Caminho livre")
+    print("Qtde de objetos atingidos:", cont)
 main()
