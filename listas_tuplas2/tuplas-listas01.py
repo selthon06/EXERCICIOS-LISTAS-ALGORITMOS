@@ -10,3 +10,33 @@
 # menos um alerta de temperatura e um de umidade). Chame a função passando essa lista. 
 # Imprima no terminal quais sensores entraram em alerta e exiba os picos máximos e 
 # mínimos. 
+def analisar_sensores(lista):
+    alertas = []
+    maior = lista[0][1]
+    menor = lista[0][2]
+
+    for i in lista:
+        id_sensor = i[0]
+        temperatura = i[1]
+        umidade = i[2]
+        if temperatura > maior:
+            maior = temperatura
+        if umidade < menor:
+            menor = umidade
+        if temperatura > 35 or umidade < 20:
+            alertas.append(id_sensor)
+    return alertas, (maior, menor)
+
+def main():
+    sensores = [
+        (1, 30, 40),
+        (2, 38, 35),
+        (3, 32, 15),
+        (4, 40, 10)
+    ]
+    alertas, picos = analisar_sensores(sensores)
+    print("Sensores em alerta:", alertas)
+    print("Maior temperatura:", picos[0])
+    print("Menor umidade:", picos[1])
+
+main()
